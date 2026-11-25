@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autofe_bench"
+version = "0.1.0"
+description = "Harness para comparar AutoFE com LLM sob o mesmo protocolo (Colab, Groq, Ollama)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy", "pandas", "scikit-learn", "requests", "scipy"]
+
+[project.optional-dependencies]
+data = ["ucimlrepo"]
+external = ["featcopilot", "openfe", "xgboost"]
+dev = ["pytest"]
+
+[tool.setuptools]
+packages = ["autofe_bench", "autofe_bench.methods"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
