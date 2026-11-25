@@ -4,6 +4,12 @@ Harness em Python para **comparar métodos de AutoFE (engenharia automática de 
 
 Inclui: `sem_fe` (baseline), **CAAFE** e **LLM-FE** (reimplementações), **GuidedFE** (método novo do grupo) e adaptadores opcionais para **FeatCopilot** e **OpenFE**.
 
+Também inclui adaptações de dois repositórios de colegas, ao contrato do harness:
+- `lucas_autofe`: [LucasBarros28/AutoFe-LLM](https://github.com/LucasBarros28/AutoFe-LLM). A LLM vê só estatísticas das colunas e escolhe entre `log1p`, `missing_indicator` e `interaction_product`. Versão simplificada (sem detector de oportunidades nem circuit breaker); a aceitação é por validação cruzada interna.
+- `gabriel_llmfe`: [GabrielFrederico1/LLM_based_FE](https://github.com/GabrielFrederico1/LLM_based_FE). A LLM escreve `add_features(df)`, só com features `fe_*` por linha; rejeita dependência de outras linhas e aceita por validação cruzada interna. Roda no sandbox do harness, em vez do `exec` do original.
+
+Use-os pelo nome: `AUTOFES = ['caafe', 'llmfe', 'guided', 'lucas_autofe', 'gabriel_llmfe']`. Os resultados **não são comparáveis** com os scripts originais: mudam o prompt, o LLM, as bases e o protocolo.
+
 > **Estado atual.** O encanamento está testado (11 testes automáticos). Os resultados com LLM real são preliminares (protocolo `dev`, 2 divisões) e **ainda não permitem concluir qual método é melhor**: veja [docs/resultados_preliminares.md](docs/resultados_preliminares.md). FeatCopilot, OpenFE e as bases `california_housing` e `diamonds` ainda não foram testados.
 
 ## Sumário

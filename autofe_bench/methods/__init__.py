@@ -27,11 +27,14 @@ class SemFE(AutoFEMethod):
 def _registry():
     from .caafe import CAAFE
     from .external import FeatCopilot, OpenFE
+    from .gabriel_llmfe import GabrielLLMFE
     from .guided import GuidedFE
     from .llmfe import LLMFE
+    from .lucas_autofe import LucasAutoFE
 
     return {"sem_fe": SemFE, "caafe": CAAFE, "llmfe": LLMFE, "guided": GuidedFE,
-            "featcopilot": FeatCopilot, "openfe": OpenFE}
+            "featcopilot": FeatCopilot, "openfe": OpenFE,
+            "lucas_autofe": LucasAutoFE, "gabriel_llmfe": GabrielLLMFE}
 
 
 def available_methods() -> list[str]:
